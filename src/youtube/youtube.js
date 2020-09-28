@@ -55,13 +55,21 @@ class Youtube {
       return response.author.id === message.author.id && response in answers;
     };
 
-    const collected = await message.channel.awaitMessages(filter, {
-      max: 1,
-      time: 10000,
-      errors: ['time'],
-    });
+    try {
+      var collected = await message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      });
+    } catch {
+      tempSongListMessage.delete();
+      message.channel.send('시간이 초과되었습니다.');
+      return;
+    }
+
     let select = collected.first().content;
     if (select === 'c' || select === 'ㅊ') {
+      message.channel.send('취소가선택됨');
       tempSongListMessage.delete();
       return;
     }
@@ -147,7 +155,7 @@ class Youtube {
       })
       .on('error', error => console.error(error));
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-    serverQueue.textChannel.send(`**${song.title} 노래 재생`);
+    serverQueue.textChannel.send(`**${song.title}** 노래 재생`);
   }
 }
 
