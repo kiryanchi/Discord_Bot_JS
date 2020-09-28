@@ -161,7 +161,7 @@ class Youtube {
     }
 
     const dispatcher = serverQueue.connection
-      .play(ytdl(song.url), { filter: 'audioonly', type: 'opus' })
+      .play(ytdl(song.url, { filter: 'audioonly', type: 'opus', highWaterMark: 1<<25 }))
       .on('finish', () => {
         console.log('노래끝');
         serverQueue.songs.shift();
