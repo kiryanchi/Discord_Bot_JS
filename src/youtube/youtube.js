@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const axios = require('axios');
-const { queue } = require('async');
 
 class Youtube {
   constructor(api) {
