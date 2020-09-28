@@ -107,6 +107,20 @@ class Youtube {
     }
   }
 
+  skip(message, serverQueue) {
+    if (!message.member.voice.channel)
+      return message.channel.send('음성 채널에 있어야 스킵가능!');
+    if (!serverQueue) return message.channel.send('스킵할 곡이 없슴다');
+    serverQueue.connection.dispatcher.end();
+  }
+
+  stop(message, serverQueue) {
+    if (!message.member.voice.channel)
+      return message.channel.send('음성 채널에 있어야 스탑가능!');
+    serverQueue.songs = [];
+    serverQueue.connection.dispatcher.end();
+  }
+
   async _search(songTitle) {
     let url = 'https://www.googleapis.com/youtube/v3/search?';
     const optionParams = {
