@@ -1,2 +1,5 @@
-node_modules
+test.js
+exp.js
 config.json
+node_modules/
+.vscode/
