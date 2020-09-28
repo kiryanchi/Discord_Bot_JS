@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const axios = require('axios');
-const { queue } = require('async');
 
 class Youtube {
   constructor(api) {
@@ -165,7 +164,7 @@ class Youtube {
       .play(ytdl(song.url))
       .on('finish', () => {
         serverQueue.songs.shift();
-        play(guild, serverQueue.songs[0]);
+        this._play(guild, serverQueue.songs[0], queue);
       })
       .on('error', error => console.error(error));
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
