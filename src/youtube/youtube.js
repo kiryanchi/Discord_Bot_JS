@@ -161,8 +161,9 @@ class Youtube {
     }
 
     const dispatcher = serverQueue.connection
-      .play(ytdl(song.url))
+      .play(ytdl(song.url), { filter: 'audioonly', type: 'opus' })
       .on('finish', () => {
+        console.log('노래끝');
         serverQueue.songs.shift();
         this._play(guild, serverQueue.songs[0], queue);
       })
