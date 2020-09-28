@@ -123,13 +123,15 @@ class Youtube {
   }
 
   showQueue(message, serverQueue) {
+    if (!serverQueue || !serverQueue.songs) {
+      message.channel.send('큐가 비어있습니다.');
+      return;
+    }
     let text = '```css\n';
 
-    const songQueue = serverQueue.get(message.guild.id);
-
-    for (let i in songQueue.songs) {
+    for (let i in serverQueue.songs) {
       i++;
-      text += `${i}: ${songs[i].title}\n`;
+      text += `${i}: ${serverQueue.songs[i-1].title}\n`;
     }
     text += '```';
 
