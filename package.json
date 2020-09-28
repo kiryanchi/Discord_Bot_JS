@@ -1,0 +1,29 @@
+{
+  "name": "discordbotjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "discord.js": "^12.3.1",
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "opusscript": "^0.0.7",
+    "request": "^2.88.2",
+    "ytdl-core": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiryanchi/Discord_Bot_JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiryanchi/Discord_Bot_JS/issues"
+  },
+  "homepage": "https://github.com/kiryanchi/Discord_Bot_JS#readme"
+}
