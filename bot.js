@@ -27,17 +27,22 @@ client.on('message', async message => {
 
   const serverQueue = queue.get(message.guild.id);
 
-  if (message.content.startsWith(`${prefix}노래`)) {
+  if (message.content.startsWith(`${prefix}ㄴㄹ`)) {
     yt.execute(message, serverQueue, queue);
     return;
-  } else if (message.content.startsWith(`${prefix}스킵`)) {
+  } else if (message.content.startsWith(`${prefix}ㅅㅋ`)) {
     yt.skip(message, serverQueue);
     return;
-  } else if (message.content.startsWith(`${prefix}종료`)) {
+  } else if (message.content.startsWith(`${prefix}ㅌㅌ`)) {
     yt.stop(message, serverQueue);
     return;
+  } else if (message.content.startsWith(`${prefix}ㅋ`)) {
+    yt.showQueue(message, serverQueue);
+    return;
   } else {
-    message.channel.send('You need to enter a valid command!');
+    message.channel.send(
+      '명령어: `ㄴㄹ(노래), ㅅㅋ(스킵), ㅌㅌ(종료), ㅋ(큐)`'
+    );
   }
 });
 
