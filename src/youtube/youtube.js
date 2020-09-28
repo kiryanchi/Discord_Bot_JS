@@ -68,6 +68,7 @@ class Youtube {
 
     let select = collected.first().content;
     if (select === 'c' || select === 'ㅊ') {
+      collected.delete();
       message.channel.send('취소가선택됨');
       tempSongListMessage.delete();
       return;
@@ -75,6 +76,7 @@ class Youtube {
     select = parseInt(select) - 1;
     const song = songList[select];
     message.channel.send(`${song.title} 선택됨`);
+    collected.delete();
     tempSongListMessage.delete();
 
     if (!serverQueue) {
@@ -118,6 +120,20 @@ class Youtube {
       return message.channel.send('음성 채널에 있어야 스탑가능!');
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end();
+  }
+
+  showQueue(message, serverQueue) {
+    let text = '```css\n';
+
+    const songQueue = serverQueue.get(message.guild.id);
+
+    for (let i in songQueue.songs) {
+      i++;
+      text += `${i}: ${songs[i].title}\n`;
+    }
+    text += '```';
+
+    message.channel.send(text);
   }
 
   async _search(songTitle) {
