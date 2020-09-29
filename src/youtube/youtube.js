@@ -51,13 +51,13 @@ class Youtube {
       'ㅊ',
     ];
     const filter = response => {
-      return response.author.id === message.author.id && response in answers;
+      return response.author.id === message.author.id && answers.includes(response.content);
     };
 
     try {
       var collected = await message.channel.awaitMessages(filter, {
         max: 1,
-        time: 10000,
+        time: 20000,
         errors: ['time'],
       });
     } catch {
@@ -67,6 +67,7 @@ class Youtube {
     }
 
     let select = collected.first().content;
+    console.log(select);
     if (select === 'c' || select === 'ㅊ') {
       collected.delete();
       message.channel.send('취소가선택됨');
