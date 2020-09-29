@@ -39,7 +39,11 @@ client.on('message', async message => {
   } else if (message.content.startsWith(`${prefix}ㅋ`)) {
     yt.showQueue(message, serverQueue);
     return;
-  } else {
+  } else if (message.content.startsWith(`${prefix}카운터`)) {
+    // counter(message);
+    return;
+  }
+    else {
     message.channel.send(
       '명령어: `ㄴㄹ(노래), ㅅㅋ(스킵), ㅌㅌ(종료), ㅋ(큐)`'
     );
