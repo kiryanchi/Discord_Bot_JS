@@ -3,3 +3,4 @@ exp.js
 config.json
 node_modules/
 .vscode/
+nohup.out
